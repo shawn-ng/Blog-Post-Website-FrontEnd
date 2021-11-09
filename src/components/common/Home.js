@@ -23,7 +23,15 @@ function Home() {
     APIcalltogetUser()
   }, [])
   console.log(state)
-  return <>{state.length !== 0 ? <p>all g</p> : <p>there is nothing</p>}</>
+  return (
+    <>
+      {state.length !== 0 ? (
+        <p>This is all working</p>
+      ) : (
+        <p>there is nothing</p>
+      )}
+    </>
+  )
 }
 
 export default Home
