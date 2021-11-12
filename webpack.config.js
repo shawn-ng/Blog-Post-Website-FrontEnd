@@ -43,12 +43,11 @@ module.exports = (webpackEnv) => {
       port: 3000,
       historyApiFallback: true,
       // proxy: {
-      //   // ! This tells webpack about express. Any requests to we prefix with /api will get redirected to django!
-      //   '': {
-      //     // Our express server. It's not running on https, so it'll be http!
-      //     target: 'http://127.0.0.1:8000/',
-      //     // This is for development purposes only, so we aren't too worried about securing our proxy!
-      //     secure: false,
+      //   '/api/gg': {
+      //     bypass: (req, res) =>
+      //       res.send({
+      //         mssg: 'proxy server - Message came from bypass property in webpack',
+      //       }),
       //   },
       // },
     },

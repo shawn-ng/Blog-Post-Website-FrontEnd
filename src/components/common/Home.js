@@ -1,8 +1,10 @@
 import React from 'react'
 import axios from 'axios'
 
+import baseURL from '../../api/URL.js'
+
 async function getAllUser() {
-  const { data } = await axios.get('http://127.0.0.1:8000/post/')
+  const { data } = await axios.get(`${baseURL}post/`)
   console.log(data)
   return data
 }

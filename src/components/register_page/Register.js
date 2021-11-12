@@ -2,6 +2,7 @@ import React from 'react'
 
 // importing resgister middleware
 import registerCheck from './registerMiddleware.js'
+import registering from '../../api/Auth/registerAPI.js'
 
 function Register() {
   // input value state
@@ -29,10 +30,18 @@ function Register() {
   }
 
   // function to submit
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     if (registerCheck(inputState.input)) {
+      const data = {
+        username: inputState.input.username,
+        first_name: inputState.input.first_name,
+        last_name: inputState.input.last_name,
+        email: inputState.input.email,
+        password: inputState.input.password,
+      }
       // api call for registering
+      registering(data)
     } else {
       setErrorMessage('Password and password confirmation not matched!')
     }
