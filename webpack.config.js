@@ -40,8 +40,8 @@ module.exports = (webpackEnv) => {
     devServer: {
       hot: true,
       open: true,
-      port: 8001,
-      // historyApiFallback: true,
+      port: 3000,
+      historyApiFallback: true,
       // proxy: {
       //   // ! This tells webpack about express. Any requests to we prefix with /api will get redirected to django!
       //   '': {
