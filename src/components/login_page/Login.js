@@ -42,7 +42,7 @@ function Login() {
   }
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form">
         <div className="form-group">
           <label htmlFor="username">Username</label>
           <input
@@ -71,7 +71,7 @@ function Login() {
           </div>
         }
         <div className="form-group">
-          <input type="submit" value="Login" />
+          <input type="submit" value="Login" className="btn" />
         </div>
       </form>
     </div>

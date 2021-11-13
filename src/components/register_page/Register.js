@@ -49,7 +49,7 @@ function Register() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form">
         <div className="form-group">
           <label htmlFor="username">Username</label>
           <input
@@ -122,7 +122,7 @@ function Register() {
           </div>
         }
         <div className="form-group">
-          <input type="submit" value="Register" />
+          <input type="submit" value="Register" className="btn" />
         </div>
       </form>
     </div>
