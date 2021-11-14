@@ -6,7 +6,7 @@ import baseURL from '../URL'
 import getToken from '../Auth_Token/getToken'
 
 function getBlog() {
-  const { data } = axios.get(`${baseURL}post/`, {
+  const data = axios.get(`${baseURL}post/`, {
     headers: {
       Authorization: `Bearer ${getToken()}`,
     },
