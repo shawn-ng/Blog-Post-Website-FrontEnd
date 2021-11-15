@@ -14,8 +14,8 @@ import Login from './login_page/Login.js'
 
 function AppWrapper() {
   let element = useRoutes([
-    { path: '/register', element: <Register /> },
-    { path: '/login', element: <Login /> },
+    { path: '/register/', element: <Register /> },
+    { path: '/login/', element: <Login /> },
     {
       path: '/user',
       element: <NavBar />,

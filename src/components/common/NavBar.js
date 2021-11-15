@@ -13,9 +13,8 @@ function NavBar() {
   }
 
   return (
-    <div className="relative min-h-screen flex">
+    <div className="relative min-h-screen flex bg-gray-700">
       <div className="bg-gray-800 text-gray-100 flex justify-between">
-        {/* <a href="#">Logo</a> */}
         <button
           className="p-4 focus:outline-none focus:bg-gray-700"
           id="open-menu-button"
@@ -39,7 +38,7 @@ function NavBar() {
       </div>
 
       <div
-        className={`side-bar bg-gray-800 w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform ${openSideBar} transition duration-500 ease-in-out`}
+        className={`side-bar bg-gray-800 w-64 space-y-6 py-7 px-2 fixed inset-y-0 left-0 transform ${openSideBar} transition duration-500 ease-in-out`}
       >
         <button
           className=" top-3 right-3 absolute focus:outline-none focus:bg-gray-700"

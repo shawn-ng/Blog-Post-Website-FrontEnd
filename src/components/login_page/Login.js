@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // import login in api
 import loginIn from '../../api/Auth/loginAPI'
@@ -7,6 +8,7 @@ import loginIn from '../../api/Auth/loginAPI'
 import storeToken from '../../api/Auth_Token/storeToken'
 
 function Login() {
+  const navigate = useNavigate()
   // input value state
   let [inputState, setInputState] = React.useState({
     input: {
@@ -35,14 +37,16 @@ function Login() {
       const token = await loginIn(inputState.input)
       // storing token into local storage
       storeToken(token.data.access)
+      navigate('/user/home/')
     } catch (err) {
       console.log(err)
       setErrorMessage('Password or username not match.')
     }
   }
+
   return (
     <div>
-      <form onSubmit={handleSubmit} className="form">
+      <form className="form">
         <div className="form-group">
           <label htmlFor="username">Username</label>
           <input
@@ -63,6 +67,7 @@ function Login() {
             placeholder="password"
             onChange={handleChange}
             value={inputState.input.password}
+            autoComplete="on"
           />
         </div>
         {
@@ -71,7 +76,7 @@ function Login() {
           </div>
         }
         <div className="form-group">
-          <input type="submit" value="Login" className="btn" />
+          <button onClick={handleSubmit}>Login</button>
         </div>
       </form>
     </div>
