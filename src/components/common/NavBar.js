@@ -1,6 +1,9 @@
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
 
+// importing remove token ket
+import removeToken from '../../api/Auth_Token/removeToken'
+
 function NavBar() {
   let [openSideBar, setOpenSideBar] = React.useState('-translate-x-full')
 
@@ -10,6 +13,11 @@ function NavBar() {
     } else {
       setOpenSideBar('-translate-x-full')
     }
+  }
+
+  // handle logout
+  function logOutButton() {
+    removeToken()
   }
 
   return (
@@ -80,8 +88,9 @@ function NavBar() {
             Friends
           </Link>
           <Link
-            to="/login"
+            to="/login/"
             className="block text-white py-2.5 px-4 pb-5 rounded transition duration-200 hover:bg-gray-700 hover:text-white"
+            onClick={logOutButton}
           >
             LogOut
           </Link>

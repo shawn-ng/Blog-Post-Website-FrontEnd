@@ -53,7 +53,7 @@ function Home() {
                   <div className="flex flex-row justify-evenly">
                     <div className="flex flex-col justify-around w-1/2 ">
                       <div className="my-3">
-                        <p>{data.profile_id}</p>
+                        <p>{data.profile_id.profile_id}</p>
                       </div>
                       <div>
                         <img
@@ -62,7 +62,7 @@ function Home() {
                         />
                       </div>
                     </div>
-                    <div className="relative flex flex-col h-9/12 w-7/12 pt-36 rounded hover:bg-blue-300 transition duration-500 ease-in-out">
+                    <div className="relative flex flex-col h-5/12 w-7/12 pt-36 rounded hover:bg-indigo-300  transition duration-500 ease-in-out">
                       <p className="text-center text-white truncate ">
                         {data.post_description}
                       </p>
@@ -72,15 +72,15 @@ function Home() {
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-9 w-9 hover:w-10 "
+                          className="h-9 w-9 hover:w-10"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="white"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
                             d="M14 5l7 7m0 0l-7 7m7-7H3"
                           />
                         </svg>
@@ -101,9 +101,9 @@ function Home() {
               stroke="white"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
