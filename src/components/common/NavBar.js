@@ -76,7 +76,7 @@ function NavBar() {
             Home
           </Link>
           <Link
-            to="/"
+            to="/user/account/"
             className="block text-white py-2.5 px-4 pb-5 mt-15 rounded transition duration-200 hover:bg-gray-700 hover:text-white"
           >
             User Account
