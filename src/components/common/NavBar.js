@@ -70,6 +70,12 @@ function NavBar() {
         </button>
         <nav>
           <Link
+            to="/user/home/"
+            className="block text-white py-2.5 px-4 pb-5 rounded transition duration-200 hover:bg-gray-700 hover:text-white"
+          >
+            Home
+          </Link>
+          <Link
             to="/"
             className="block text-white py-2.5 px-4 pb-5 mt-15 rounded transition duration-200 hover:bg-gray-700 hover:text-white"
           >

@@ -12,15 +12,15 @@ Home what do I want to have?
 */
 
 /*
-- getting information of the api 
+- clicking the post and going into the post it self
 */
 function Home() {
   const navigate = useNavigate()
   let [blogState, setBlogState] = React.useState()
 
   // button to get into full article
-  function fullPostButton() {
-    navigate('/login')
+  function fullPostButton(e) {
+    navigate(`/user/${e.target.id}/`)
   }
 
   // initiate the calling of the api
@@ -37,7 +37,7 @@ function Home() {
   React.useEffect(() => {
     gettingBlogPost()
   }, [])
-
+  console.log(blogState)
   return (
     // content of the post
     <>
@@ -63,7 +63,7 @@ function Home() {
                       </div>
                     </div>
                     <div className="relative flex flex-col h-5/12 w-7/12 pt-36 rounded hover:bg-indigo-300  transition duration-500 ease-in-out">
-                      <p className="text-center text-white truncate ">
+                      <p className="text-center text-white truncate">
                         {data.post_description}
                       </p>
                       <button
@@ -73,6 +73,8 @@ function Home() {
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-9 w-9 hover:w-10"
+                          onClick={fullPostButton}
+                          id={data.post_id}
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="white"

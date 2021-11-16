@@ -11,6 +11,7 @@ import NavBar from './common/NavBar.js'
 import Home from './home_page/Home.js'
 import Register from './register_page/Register'
 import Login from './login_page/Login.js'
+import SinglePage from './single_blog_page/SingleBlogPage.js'
 
 function AppWrapper() {
   let element = useRoutes([
@@ -19,7 +20,10 @@ function AppWrapper() {
     {
       path: '/user',
       element: <NavBar />,
-      children: [{ path: '/user/home', element: <Home /> }],
+      children: [
+        { path: '/user/home/', element: <Home /> },
+        { path: '/user/:id/', element: <SinglePage /> },
+      ],
     },
   ])
   return element
