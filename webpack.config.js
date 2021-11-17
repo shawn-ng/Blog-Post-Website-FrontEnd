@@ -2,6 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 const env =
   process.env.NODE_ENV === 'production'
     ? new webpack.EnvironmentPlugin({ ...process.env })
@@ -24,17 +26,28 @@ module.exports = (webpackEnv) => {
     module: {
       rules: [
         { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
-        { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+        // { test: /\.css$/, use: ['style-loader', 'css-loader'] },
         {
           test: /\.js$/,
           enforce: 'pre',
           use: ['source-map-loader'],
         },
-        {
-          test: /\.s(a|c)ss$/,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
-        },
+        // {
+        //   test: /\.s(a|c)ss$/,
+        //   use: ['style-loader', 'css-loader', 'sass-loader'],
+        // },
         { test: /\.(png|jpe?g|gif)$/i, use: 'file-loader' },
+        {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: { importLoaders: 1 },
+            },
+            'postcss-loader',
+          ],
+        },
       ],
     },
     devServer: {
@@ -60,6 +73,9 @@ module.exports = (webpackEnv) => {
         inject: 'body',
       }),
       env,
+      // new MiniCssExtractPlugin({
+      //   filename: 'style.css',
+      // }),
     ],
   }
 }
