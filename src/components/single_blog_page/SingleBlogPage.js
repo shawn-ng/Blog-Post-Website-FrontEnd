@@ -38,7 +38,7 @@ function SinglePage() {
       <button onClick={backMenuButton}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-9 w-9 hover:w-10"
+          className="h-9 w-9 hover:w-10"
           fill="none"
           viewBox="0 0 24 24"
           stroke="white"
@@ -66,12 +66,12 @@ function SinglePage() {
             {postInfoState.post_paragraph.split('/n').map((para) => {
               // add /n for line break in this case
               return (
-                <>
+                <div key={para}>
                   <div>
                     <p className="text-white">{para}</p>
                   </div>
                   <br />
-                </>
+                </div>
               )
             })}
           </div>

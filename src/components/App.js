@@ -8,6 +8,7 @@ import Register from './register_page/Register'
 import Login from './login_page/Login.js'
 import SinglePage from './single_blog_page/SingleBlogPage.js'
 import UserAcc from './user_page/UserAcc.js'
+import Profile from './profile_page/Profile.js'
 
 function AppWrapper() {
   let element = useRoutes([
@@ -20,6 +21,7 @@ function AppWrapper() {
         { path: '/user/home/', element: <Home /> },
         { path: '/user/:id/', element: <SinglePage /> },
         { path: '/user/account/', element: <UserAcc /> },
+        { path: '/user/profile/:id/', element: <Profile /> },
       ],
     },
   ])

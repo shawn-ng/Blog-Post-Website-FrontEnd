@@ -45,12 +45,9 @@ function Home() {
         {blogState ? (
           blogState.map((data) => {
             return (
-              <>
-                <div
-                  className="my-6 p-3 rounded hover:bg-gray-800 transition duration-500 ease-in-out"
-                  key={data.post_id}
-                >
-                  <div className="flex flex-row justify-evenly">
+              <div key={data.post_id}>
+                <div className="my-6 p-3 rounded border-2 border-light-blue-500 border-opacity-50 hover:bg-gray-800 transition duration-500 ease-in-out">
+                  <div className="flex flex-row justify-evenly ">
                     <div className="flex flex-col justify-around w-1/2 ">
                       <div className="my-3">
                         <p>{data.profile_id.profile_id}</p>
@@ -62,7 +59,7 @@ function Home() {
                         />
                       </div>
                     </div>
-                    <div className="relative flex flex-col h-5/12 w-7/12 pt-36 rounded hover:bg-indigo-300  transition duration-500 ease-in-out">
+                    <div className="relative flex flex-col h-5/12 w-7/12 justify-center items-center  rounded  transform hover:scale-110 transition duration-500 ease-in-out">
                       <p className="text-center text-white truncate">
                         {data.post_description}
                       </p>
@@ -90,7 +87,7 @@ function Home() {
                     </div>
                   </div>
                 </div>
-              </>
+              </div>
             )
           })
         ) : (

@@ -1,24 +1,58 @@
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 
 // importing remove token ket
 import removeToken from '../../api/Auth_Token/removeToken'
 
+// getting profiles
+import getUserDetails from '../../api/Profile/userAcc'
+
 function NavBar() {
+  const navigate = useNavigate()
+
   let [openSideBar, setOpenSideBar] = React.useState('-translate-x-full')
+  let [openProfiles, setOpenProfiles] = React.useState('-translate-x-full')
+  let [userDetailState, setUserDetails] = React.useState()
 
   function sideBarButton(e) {
     if (e.target.id === 'open-menu-button') {
       setOpenSideBar('')
     } else {
       setOpenSideBar('-translate-x-full')
+      setOpenProfiles('-translate-x-full')
     }
+  }
+
+  // clicking profile section
+  function clickProfile(e) {
+    if (openProfiles === '-translate-x-full') setOpenProfiles('')
+    else setOpenProfiles('-translate-x-full')
   }
 
   // handle logout
   function logOutButton() {
     removeToken()
   }
+
+  // handle individual profile
+  function clickIndividualProfile(e) {
+    navigate(`/user/profile/${e.target.id}/`)
+    window.location.reload()
+  }
+
+  // getting user profile details
+  async function gettingProfiles() {
+    try {
+      const data = await getUserDetails()
+      setUserDetails(data.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  React.useEffect(() => {
+    gettingProfiles()
+  }, [])
 
   return (
     <div className="relative min-h-screen flex bg-gray-700">
@@ -85,17 +119,43 @@ function NavBar() {
             to="/"
             className="block text-white py-2.5 px-4 pb-5 rounded transition duration-200 hover:bg-gray-700 hover:text-white"
           >
-            Profiles
-          </Link>
-          <Link
-            to="/"
-            className="block text-white py-2.5 px-4 pb-5 rounded transition duration-200 hover:bg-gray-700 hover:text-white"
-          >
             Friends
           </Link>
+          <div>
+            <div
+              className="block text-white py-2.5 px-4 pb-5 rounded transition duration-200 hover:bg-gray-700 hover:text-white"
+              onClick={clickProfile}
+            >
+              <p>Profiles</p>
+            </div>
+          </div>
+          <div
+            className={`block flex justify-center transform ${openProfiles} transition duration-500 ease-in-out`}
+          >
+            <ul>
+              {userDetailState ? (
+                userDetailState.map((profile) => {
+                  return (
+                    <li key={profile.profile_id}>
+                      <button
+                        to={`/user/profile/${profile.profile_id}/`}
+                        className={`block text-white py-2.5 px-4 pb-5 rounded transition duration-200 hover:bg-indigo-300 hover:text-gray-900`}
+                        onClick={clickIndividualProfile}
+                        id={profile.profile_id}
+                      >
+                        {profile.profile_name}
+                      </button>
+                    </li>
+                  )
+                })
+              ) : (
+                <p>loading</p>
+              )}
+            </ul>
+          </div>
           <Link
             to="/login/"
-            className="block text-white py-2.5 px-4 pb-5 rounded transition duration-200 hover:bg-gray-700 hover:text-white"
+            className="absolute inset-x-0 bottom-2 block text-white py-2.5 px-4 pb-5 mr-1 rounded transition duration-500 hover:bg-gray-700 hover:text-white"
             onClick={logOutButton}
           >
             LogOut
