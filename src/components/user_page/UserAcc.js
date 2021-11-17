@@ -17,6 +17,11 @@ function UserAcc() {
     }
   }
 
+  // clicking the profile button
+  function clickProfile(e) {
+    console.log('this is being clicked')
+  }
+
   React.useEffect(() => {
     gettingUserDetails()
   }, [])
@@ -27,8 +32,8 @@ function UserAcc() {
       {/* profile image and background image or design */}
       <div>
         <div className="flex flex-col">
-          <div className="h-5/6 bg-indigo-300 p-3">
-            <div className="rounded-full h-1/6 w-1/6 bg-indigo-700 ">
+          <div className="h-5/6 bg-indigo-300 p-3 rounded">
+            <div className="rounded-full h-1/6 w-1/6 bg-indigo-700">
               {userDetailState ? (
                 <>
                   {userDetailState[0].user_id_profile.user_image_url ? (
@@ -90,22 +95,22 @@ function UserAcc() {
                   </div>
                 </div>
                 <div className="flex flex-col">
-                  <div className="my-7 p-3">
+                  <div className="my-7 p-3 hover:bg-gray-900 transition duration-500 ease-in-out rounded">
                     <p className="text-white text-center">
                       {userDetailState[0].user_id_profile.username}
                     </p>
                   </div>
-                  <div className="my-7 p-3">
+                  <div className="my-7 p-3 hover:bg-gray-900 transition duration-500 ease-in-out rounded">
                     <p className="text-white text-center">
                       {userDetailState[0].user_id_profile.first_name}
                     </p>
                   </div>
-                  <div className="my-7 p-3">
+                  <div className="my-7 p-3 hover:bg-gray-900 transition duration-500 ease-in-out rounded">
                     <p className="text-white text-center">
                       {userDetailState[0].user_id_profile.last_name}
                     </p>
                   </div>
-                  <div className="my-7 p-3">
+                  <div className="my-7 p-3 hover:bg-gray-900 transition duration-500 ease-in-out rounded">
                     <p className="text-white text-center">
                       {userDetailState[0].user_id_profile.email}
                     </p>
@@ -136,9 +141,13 @@ function UserAcc() {
               {userDetailState ? (
                 userDetailState.map((profile) => {
                   return (
-                    <div className="w-2/5 h-full bg-blue-300 my-5 rounded p-10">
-                      <p>hello</p>
-                    </div>
+                    <button
+                      className="w-2/5 h-full bg-blue-300 my-5 rounded p-10 hover:bg-indigo-700 transition duration-500 ease-in-out"
+                      onClick={clickProfile}
+                      id={profile.profile_id}
+                    >
+                      <p className="text-center">{profile.profile_name}</p>
+                    </button>
                   )
                 })
               ) : (
