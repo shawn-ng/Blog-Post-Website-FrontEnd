@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
+import { Link } from 'react-router-dom'
 
 // import api call of the blog post
 import getBlog from '../../api/Blog_Post/getBlog'
@@ -49,8 +50,33 @@ function Home() {
                 <div className="my-6 p-3 rounded border-2 border-light-blue-500 border-opacity-50 hover:bg-gray-800 transition duration-500 ease-in-out">
                   <div className="flex flex-row justify-evenly ">
                     <div className="flex flex-col justify-around w-1/2 ">
-                      <div className="my-3">
-                        <p>{data.profile_id.profile_id}</p>
+                      <div className="my-2 flex flex-row">
+                        <div className="rounded-full h-16 w-16 mt-3 ml-3 bg-gray-900">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-15 w-15"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="white"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="1"
+                              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                            />
+                          </svg>
+                        </div>
+                        <div className="flex justify-center items-center m-4">
+                          {/* Visiting friend profile */}
+                          <Link
+                            to={`/user/profile/${data.profile_id.profile_id}/`}
+                          >
+                            <p className="text-center text-white">
+                              {data.profile_id.profile_name}
+                            </p>
+                          </Link>
+                        </div>
                       </div>
                       <div>
                         <img
