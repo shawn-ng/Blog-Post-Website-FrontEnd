@@ -6,10 +6,7 @@ import { Link } from 'react-router-dom'
 import getBlog from '../../api/Blog_Post/getBlog'
 
 /*
-Home what do I want to have?
-- profile section 
-- all the blog post 
-- edit profile section 
+Search for posting
 */
 
 /*

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import getSingleProfile from '../../api/Profile/getSingleProfile'
@@ -50,6 +51,8 @@ function Profile() {
     gettingProfilePosts()
   }, [])
 
+  console.log(profileInfo)
+
   return (
     <div className="container mx-auto my-5 p-4 flex flex-col ">
       <div className="flex flex-col h-3/6 bg-indigo-300 rounded">
@@ -80,15 +83,24 @@ function Profile() {
         </div>
         <div className="mt-2 ml-8 h-1/6 ">
           {profileInfo ? (
-            <h1 className="p-2 ">{profileInfo.profile_name}</h1>
+            <Link to={`/user/account/${profileInfo.user_id_profile.id}/`}>
+              <h1 className="p-1 ">{profileInfo.user_id_profile.username}</h1>
+            </Link>
           ) : (
             <p>loading</p>
           )}
         </div>
-        <div className="mt-4 ml-8 h-1/6 ">
+        <div className="mt-1 ml-8 h-1/6 ">
+          {profileInfo ? (
+            <h1 className="p-1 ">{profileInfo.profile_name}</h1>
+          ) : (
+            <p>loading</p>
+          )}
+        </div>
+        <div className="mt-1 ml-8 h-1/6 ">
           {profileInfo ? (
             <>
-              <p className="p-2 ">{profileInfo.description}</p>
+              <p className="p-1 ">{profileInfo.description}</p>
             </>
           ) : (
             <p>loading</p>

@@ -9,6 +9,7 @@ import Login from './login_page/Login.js'
 import SinglePage from './single_blog_page/SingleBlogPage.js'
 import UserAcc from './user_page/UserAcc.js'
 import Profile from './profile_page/Profile.js'
+import Friend from './friend/Friend.js'
 
 function AppWrapper() {
   let element = useRoutes([
@@ -20,8 +21,9 @@ function AppWrapper() {
       children: [
         { path: '/user/home/', element: <Home /> },
         { path: '/user/:id/', element: <SinglePage /> },
-        { path: '/user/account/', element: <UserAcc /> },
+        { path: '/user/account/:id/', element: <UserAcc /> },
         { path: '/user/profile/:id/', element: <Profile /> },
+        { path: '/user/friend/', element: <Friend /> },
       ],
     },
   ])

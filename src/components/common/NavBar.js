@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
+import getPayload from '../../api/Auth_Token/getPayLoad'
 
 // importing remove token ket
 import removeToken from '../../api/Auth_Token/removeToken'
@@ -44,7 +45,11 @@ function NavBar() {
   async function gettingProfiles() {
     try {
       const data = await getUserDetails()
-      setUserDetails(data.data)
+      setUserDetails(
+        data.data.filter((user) => {
+          return user.user_id_profile.id === getPayload().user_id
+        })
+      )
     } catch (err) {
       console.log(err)
     }
@@ -110,13 +115,13 @@ function NavBar() {
             Home
           </Link>
           <Link
-            to="/user/account/"
+            to={`/user/account/${getPayload().user_id}/`}
             className="block text-white py-2.5 px-4 pb-5 mt-15 rounded transition duration-200 hover:bg-gray-700 hover:text-white"
           >
             User Account
           </Link>
           <Link
-            to="/"
+            to="/user/friend/"
             className="block text-white py-2.5 px-4 pb-5 rounded transition duration-200 hover:bg-gray-700 hover:text-white"
           >
             Friends
