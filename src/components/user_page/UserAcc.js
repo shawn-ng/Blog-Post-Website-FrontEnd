@@ -75,7 +75,11 @@ function UserAcc() {
   // reject button
   async function rejectButton(e) {
     if (e.target.name === 'unfollow') {
-      await rejectFriendRequest(parseFloat(e.target.id) + 1)
+      if (parseFloat(e.target.id) % 2 !== 0) {
+        await rejectFriendRequest(parseFloat(e.target.id) + 1)
+      } else {
+        await rejectFriendRequest(parseFloat(e.target.id))
+      }
     } else {
       await rejectFriendRequest(e.target.id)
     }
@@ -85,6 +89,7 @@ function UserAcc() {
   // accept button
   async function acceptButton(e) {
     await acceptFriendRequest(e.target.id)
+
     window.location.reload()
   }
 
